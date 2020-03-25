@@ -17,11 +17,11 @@ routes.post('/login', SessionController.login)
 
 // Routes to create and delete and get information
 routes.get('/incidents', IncidentController.index)
-routes.get('/profile', ProfileController.index)
 
 // Middleware to validate the session 
 routes.use(VerifyTokenMiddleware)
 
+routes.get('/profile', ProfileController.index)
 routes.post('/incidents', IncidentController.create)
 routes.delete('/incidents/:id', IncidentController.delete)
 

@@ -2,7 +2,7 @@ const connection = require('../database/connection')
 
 class ProfileController{
 	async index(req, res) {
-		const ong_id = req.headers.authorization
+		const ong_id = req.ongId
 		if(!ong_id){
 			return res.status(400).json({error: "Ong required"})
 		}
