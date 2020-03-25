@@ -3,10 +3,12 @@
 
 ---
 
- # [Usage](https://github.com/J-Keven/Blog_NodeJs#tecnologias) | [Rotas](https://github.com/J-Keven/Blog_NodeJs#Routes)
+ # [Usage](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#rotas) | [Rotas](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#rotas)
   </div> 
+
 ## Usage
-- Com o repisitorio clonado na sua maquina, navegue até a pasta `backend`:
+
++ Com o repisitorio clonado na sua maquina, navegue até a pasta `backend`:
 
 		$ cd backend/
 
