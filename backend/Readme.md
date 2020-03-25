@@ -1,10 +1,8 @@
 <div align="center">
-  <h1>API para o BeTheHero</h1>
+<h3>API BeTheHero</h3>
 
----
-
- # [Usage](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#rotas) | [Rotas](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#rotas)
-  </div> 
+[Usage](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#usage) | [Rotas](https://github.com/J-Keven/BeTheHero-SemanaOmniStack11/tree/master/backend#rotas)
+</div> 
 
 ## Usage
 
@@ -30,7 +28,7 @@
 
 O Browser por padrão faz requisições do tipo GET, então para utilizar as requisições do tipo POST e DELETE recomenda-se usar o [*Insomnia*](https://insomnia.rest/) ou [*Postman*](https://www.postman.com/downloads/)
 
-###### Rotas para a entidade Ong
+#### Rotas para a entidade Ong
 
 
 + GET - `/ongs` Retorna todas as Ongs cadastradas.
@@ -41,7 +39,7 @@ O Browser por padrão faz requisições do tipo GET, então para utilizar as req
 
 - DELETE - `/ongs` Deleta uma determinada Ong(no cabeçalho da requisição é necessario passar uma variável `Authorization` contendo o token, `Authorization: <Meu token>`).
 
-###### Rotas para a entidade Caso
+#### Rotas para a entidade Caso
 + GET - `/incidents?page=<num>` Retorna todos os casos cadastrados. (Essa rota utiliza a técnica de [paginação](https://www.devmedia.com.br/paginacao-em-paginas-jsp/28672) onde sera retornado 5 casos por vez. Substitua `<num>` por um numero de uma pagina. exemplo: `/incidents?page=1`).
 
 - GET - `/profile/<id>` Retorna todos os casos de uma determinada Ong(é necessário informar o Id da Ong no parametro da requisição, exemplo: `/profile/1`).
