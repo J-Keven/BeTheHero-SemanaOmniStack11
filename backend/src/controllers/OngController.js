@@ -1,5 +1,5 @@
-const crypto = require('crypto')
 const connection = require('../database/connection')
+const generationUniqueId = require('../utils/generationUniqueId')
 
 class OngController {
 	async realod(req, res) {
@@ -7,15 +7,17 @@ class OngController {
 		
 		res.json(ongs)
 	}
-
+	
 	async store(req, res) {
-		const { name,
+		const { 
+			name,
 			email,
 			whatsapp,
 			city,
 			uf } = req.body
-
-		const id = crypto.randomBytes(4).toString("HEX")
+			
+		const id = generationUniqueId()
+		
 		await connection('ongs').insert({
 			id,
 			name,
