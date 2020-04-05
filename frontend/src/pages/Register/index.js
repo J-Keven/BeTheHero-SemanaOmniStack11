@@ -16,11 +16,27 @@ function Register() {
 	const [city, setCity] = useState('')
 	const [uf, setUf] = useState('')
 	const [password, setPassword] = useState('')
+	const [confirmPassword, setConfirmPassword] = useState('')
+	const [borderColor, setBosrdercolorPass] = useState('')
+	const [borderColorConfir, setBosrdercolorConfir] = useState('')
+
+	const [erroPassword, setErroPassword] = useState('')
+	const [errosConfirm, setErroConfirm] = useState('')
 
 	const history = useHistory()
 	async function hanldeRegister(e) {
 		e.preventDefault();
+		if (password.length < 6) {
+			setErroConfirm('')
+			setErroPassword('Use 6 caracteres ou mais para uma senha!')
+			return 0;
+		}
 
+		if (confirmPassword !== password) {
+			setErroConfirm('As senhas nao coencidem')
+
+			return 0;
+		}
 		const data = {
 			name,
 			email,
@@ -78,18 +94,65 @@ function Register() {
 						/>
 						<input
 							placeholder="UF"
-							style={{ width: 80 }}
+							style={{
+								width: 80
+							}}
 							value={uf}
 							onChange={e => setUf(e.target.value)}
 						/>
 					</div>
 					<input
+						className='password'
 						type='password'
 						placeholder="Senha"
 						value={password}
-						onChange={e => setPassword(e.target.value)}
+						style={{ borderColor: borderColor }}
+						onChange={e => {
+							if (e.target.value.length < 6) {
+								setBosrdercolorPass('#E02041')
+							}
+							else {
+								setBosrdercolorPass('')
+							}
+							setPassword(e.target.value)
+						}
+						}
 					/>
 
+					<div style={{
+						color: '#E02041',
+						marginLeft: '3%',
+						marginTop: 5,
+						marginBottom: 5,
+					}}>
+						<p>{erroPassword}</p>
+					</div>
+
+					<input
+						className='password'
+						type='password'
+						placeholder="Senha"
+						value={confirmPassword}
+						style={{ borderColor: borderColorConfir }}
+						onChange={e => {
+							if (e.target.value !== password) {
+								setBosrdercolorConfir('#E02041')
+							}
+							else {
+								setBosrdercolorConfir('')
+							}
+							setConfirmPassword(e.target.value)
+						}
+						}
+					/>
+					<div style={{
+						color: '#E02041',
+						marginLeft: '3%',
+						marginTop: 5,
+						marginBottom: 5,
+					}}>
+						<p>{errosConfirm}</p>
+					</div>
 					<button className="button" type="submit">Castrar</button>
 				</form>
 			</div>
