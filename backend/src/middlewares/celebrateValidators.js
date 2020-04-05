@@ -5,12 +5,19 @@ module.exports = {
 		[Segments.BODY]: Joi.object().keys({
 			name: Joi.string().required(),
 			email: Joi.string().required().email(),
+			password: Joi.string().required().min(6),
 			whatsapp: Joi.number().required(),
 			city: Joi.string().required(),
 			uf: Joi.string().required().length(2)
 		})
 	}),
-	reloadIncidents:celebrate({
+	login: celebrate({
+		[Segments.BODY]: Joi.object().keys({
+			email: Joi.string().required(),
+			password: Joi.string().required().min(6),
+		})
+	}),
+	reloadIncidents: celebrate({
 		[Segments.QUERY]: Joi.object().keys({
 			page: Joi.number()
 		})

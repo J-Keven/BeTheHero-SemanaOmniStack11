@@ -14,7 +14,10 @@ routes.post('/ongs', celebrateValidator.createOng, OngsController.store)
 routes.delete('/ongs', VerifyTokenMiddleware, OngsController.delete)
 
 // Login route
-routes.post('/login', SessionController.login)
+routes.post('/login',
+	celebrateValidator.login,
+	SessionController.login
+)
 
 // Routes to create and delete and get information
 routes.get('/incidents', celebrateValidator.reloadIncidents, IncidentController.index)

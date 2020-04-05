@@ -52,6 +52,7 @@ function Register() {
 		} catch (error) {
 			alert(`Error o cadastrar-se ${error}`)
 		}
+		return 1;
 	}
 
 
