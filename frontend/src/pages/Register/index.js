@@ -22,6 +22,7 @@ function Register() {
 
 	const [erroPassword, setErroPassword] = useState('')
 	const [errosConfirm, setErroConfirm] = useState('')
+	const [errorEmailExist, setErrorEmail] = useState('')
 
 	const history = useHistory()
 	async function hanldeRegister(e) {
@@ -46,11 +47,11 @@ function Register() {
 			password
 		}
 		try {
-			const response = await api.post('/ongs', data)
-			alert(`Seu ID de acesso é ${response.data.id}`)
+			await api.post('/ongs', data)
 			history.push('/')
+
 		} catch (error) {
-			alert(`Error o cadastrar-se ${error}`)
+			setErrorEmail('Esse email ja esta cadastrado, tente outro!')
 		}
 		return 1;
 	}
@@ -75,23 +76,39 @@ function Register() {
 						placeholder="Nome da ONG"
 						value={name}
 						onChange={e => setName(e.target.value)}
+						required
 					/>
 					<input
 						type="email"
 						placeholder="E-mail"
 						value={email}
 						onChange={e => setEmail(e.target.value)}
+						required
+
 					/>
+					<div
+						style={{
+							color: '#E02041',
+							marginLeft: '3%',
+							marginTop: 5,
+							marginBottom: 5,
+						}}
+					>
+						<p>{errorEmailExist}</p>
+					</div>
 					<input
 						placeholder="WhatsApp"
 						value={whatsapp}
 						onChange={e => setWhatsapp(e.target.value)}
+						required
 					/>
 					<div className="input-group">
 						<input
 							placeholder="Cidade"
 							value={city}
 							onChange={e => setCity(e.target.value)}
+							required
+
 						/>
 						<input
 							placeholder="UF"
@@ -100,6 +117,8 @@ function Register() {
 							}}
 							value={uf}
 							onChange={e => setUf(e.target.value)}
+							required
+
 						/>
 					</div>
 					<input
@@ -108,6 +127,7 @@ function Register() {
 						placeholder="Senha"
 						value={password}
 						style={{ borderColor: borderColor }}
+						required
 						onChange={e => {
 							if (e.target.value.length < 6) {
 								setBosrdercolorPass('#E02041')
@@ -135,6 +155,7 @@ function Register() {
 						placeholder="Senha"
 						value={confirmPassword}
 						style={{ borderColor: borderColorConfir }}
+						required
 						onChange={e => {
 							if (e.target.value !== password) {
 								setBosrdercolorConfir('#E02041')

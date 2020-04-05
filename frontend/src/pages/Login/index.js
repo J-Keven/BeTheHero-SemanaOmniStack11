@@ -10,9 +10,12 @@ export default function Login() {
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+
+	const [ErrorPassOrEmail, setError] = useState(null)
 	const history = useHistory()
 	async function handleLoign(e) {
 		e.preventDefault()
+
 		try {
 
 			const response = await api.post('/login', { email, password })
@@ -21,7 +24,7 @@ export default function Login() {
 			history.push('/profile')
 
 		} catch (error) {
-			alert("Houve um erro ao fazer login")
+			setError('Email ou senha incorretos, tente novamente!')
 		}
 
 	}
@@ -35,12 +38,24 @@ export default function Login() {
 						value={email}
 						onChange={e => setEmail(e.target.value)}
 						style={{ marginBottom: 10 }}
+						required
 					/>
 					<input placeholder="Password"
 						value={password}
 						type='password'
 						onChange={e => setPassword(e.target.value)}
+						required
 					/>
+					<div
+						style={{
+							color: "#E02041",
+							marginLeft: '3%',
+							marginTop: 5,
+							marginBottom: 3,
+						}}
+					>
+						<p>{ErrorPassOrEmail}</p>
+					</div>
 					<button className="button" type="submit">Entrer</button>
 					<Link className='back-link' to="/register">
 						<FiLogIn size={16} color="#E02041" />
